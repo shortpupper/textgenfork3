@@ -44,16 +44,16 @@ class textgenrnn:
     def __init__(self, weights_path=None,
                  vocab_path=None,
                  config_path=None,
-                 name="textgenrnn",
+                 name="all_mod",
                  allow_growth=None):
 
         if weights_path is None:
             weights_path = resource_filename(__name__,
-                                             'textgenrnn_weights.hdf5')
+                                             'all_mod_weights.hdf5')
 
         if vocab_path is None:
             vocab_path = resource_filename(__name__,
-                                           'textgenrnn_vocab.json')
+                                           'all_mod_vocab.json')
 
         if allow_growth is not None:
             c = tf.ConfigProto()
@@ -106,7 +106,7 @@ class textgenrnn:
         if return_as_list:
             return gen_texts
 
-    def generate_samples(self, n=3, temperatures=[0.2, 0.5, 1.0, 1.2, 1.5, 2.0, 2.2, 2.5], **kwargs):
+    def generate_samples(self, n=3, temperatures=[0.2, 0.5, 1.0, 1.2], **kwargs):
         for temperature in temperatures:
             print('#'*20 + '\nTemperature: {}\n'.format(temperature) +
                   '#'*20)
